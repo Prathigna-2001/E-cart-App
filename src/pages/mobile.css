@@ -1,0 +1,118 @@
+
+.product-page {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e0f7fa, #e8eaf6);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.marquee {
+  width: 100%;
+  max-width: 800px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d32f2f;
+  background: #fff3e0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  animation: pulseBg 3s ease-in-out infinite;
+}
+
+@keyframes pulseBg {
+  0%, 100% { background-color: #fff3e0; }
+  50% { background-color: #ffe0b2; }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #1a237e;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  animation: fadeInUp 1s ease forwards;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+.product-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+.product-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+.product-card:hover .product-img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #388e3c;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.desc {
+  font-size: 0.9rem;
+  color: #616161;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background-color: #1a237e;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.add-btn:hover {
+  background-color: #0d47a1;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .product-page {
+    padding: 30px 15px;
+  }
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  .product-img {
+    height: 180px;
+  }
+  .add-btn {
+    width: 100%;
+    padding: 12px;
+  }
+}
