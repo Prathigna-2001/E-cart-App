@@ -48,7 +48,7 @@ const OrderSuccess = ({ resetCart }) => {
         style={{
           padding: "0.8rem 1.6rem",
           fontSize: "1rem",
-          backgroundColor: "#1976d2",
+          backgroundColor: "#20c60dff",
           color: "#fff",
           border: "none",
           borderRadius: "40px",

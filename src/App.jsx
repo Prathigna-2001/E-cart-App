@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 import { CartProvider, useCart } from "./CartContext";
 
 import Navbar from "./components/Navbar";
@@ -17,11 +23,12 @@ import SignIn from "./pages/SignIn";
 import Payment from "./pages/Paytment";
 import OrderConfirm from "./pages/OrderConfirm";
 import OrderSuccess from "./pages/OrderSuccess";
+import NotFound from "./components/NotFound.jsx";
+
 import "./index.css";
 
-const ProtectedRoute = ({ isAuthenticated }) => {
-  return isAuthenticated ? <Outlet /> : <Navigate to="/signin" replace />;
-};
+const ProtectedRoute = ({ isAuthenticated }) =>
+  isAuthenticated ? <Outlet /> : <Navigate to="/signin" replace />;
 
 const AppRoutes = () => {
   const {
@@ -42,39 +49,50 @@ const AppRoutes = () => {
     <>
       <Marquee />
       <Navbar cartCount={cartItems.length} />
+
       <Routes>
-        
         <Route path="/" element={<Home addToCart={addToCart} />} />
         <Route path="/tshirts" element={<Tshirts addToCart={addToCart} />} />
         <Route path="/mobiles" element={<Mobiles addToCart={addToCart} />} />
         <Route path="/laptops" element={<Laptops addToCart={addToCart} />} />
-        <Route path="/electronics" element={<Electronics addToCart={addToCart} />} />
+        <Route
+          path="/electronics"
+          element={<Electronics addToCart={addToCart} />}
+        />
         <Route path="/toys" element={<Toys addToCart={addToCart} />} />
-       
-        <Route path="/cart" element={
-          <Cart
-            cartItems={cartItems}
-            removeFromCart={removeFromCart}
-            changeQuantity={changeQuantity}
-          />
-        } />
-        <Route path="/signin" element={<SignIn setUserDetails={setUserDetails} />} />
-        <Route element={<ProtectedRoute isAuthenticated={isAuth} />}>
-          <Route path="/payment" element={
-            <Payment
+
+        <Route
+          path="/cart"
+          element={
+            <Cart
               cartItems={cartItems}
-              userDetails={userDetails}
-              coupon={coupon}
-              setCoupon={setCoupon}
+              removeFromCart={removeFromCart}
+              changeQuantity={changeQuantity}
             />
-          } />
+          }
+        />
+
+        <Route path="/signin" element={<SignIn setUserDetails={setUserDetails} />} />
+
+        <Route element={<ProtectedRoute isAuthenticated={isAuth} />}>
+          <Route
+            path="/payment"
+            element={
+              <Payment
+                cartItems={cartItems}
+                userDetails={userDetails}
+                coupon={coupon}
+                setCoupon={setCoupon}
+              />
+            }
+          />
           <Route path="/order-confirm" element={<OrderConfirm cartItems={cartItems} coupon={coupon} />} />
         </Route>
         <Route path="/order-success" element={<OrderSuccess resetCart={resetCart} />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Footer />
-      
     </>
   );
 };
@@ -85,7 +103,6 @@ const App = () => (
       <AppRoutes />
     </Router>
   </CartProvider>
-  
 );
 
 export default App;

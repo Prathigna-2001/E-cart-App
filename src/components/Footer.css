@@ -1,5 +1,5 @@
 .footer {
-  background-color: #111;
+  background-color: #c01010;
   color: #fff;
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
@@ -24,7 +24,7 @@
 .footer-about h2 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: #00aced;
+  color: #220ac2;
 }
 
 .footer-about p {
@@ -36,7 +36,7 @@
 .footer-social h4 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #f0f0f0;
+  color: #0da713;
 }
 
 .footer-links ul {
@@ -49,13 +49,13 @@
 }
 
 .footer-links ul li a {
-  color: #ccc;
+  color: #430505;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-links ul li a:hover {
-  color: #00aced;
+  color: #04a982;
 }
 
 .footer-social p {
@@ -66,7 +66,7 @@
 .social-icons a {
   margin-right: 10px;
   font-size: 20px;
-  color: #ccc;
+  color: #cc13a7;
   transition: color 0.3s ease;
 }
 
@@ -78,7 +78,7 @@
   text-align: center;
   margin-top: 30px;
   padding-top: 15px;
-  border-top: 1px solid #333;
+  border-top: 1px solid #bc1616;
   font-size: 14px;
-  color: #aaa;
+  color: #04d5a1;
 }

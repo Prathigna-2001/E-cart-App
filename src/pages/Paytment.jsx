@@ -26,7 +26,7 @@ const Payment = ({ cartItems, userDetails, coupon, setCoupon }) => {
 
       <div>
         <h4>Apply Coupon:</h4>
-        {[10, 20, 30, 40, 50].map((val) => (
+        {[10, 20, 30, 40, 50, 60, 100].map((val) => (
           <button key={val} onClick={() => applyCoupon(val)}>{val}% OFF</button>
         ))}
       </div>

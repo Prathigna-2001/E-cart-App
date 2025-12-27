@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import "../CSS files/log.css";
 
 const SignIn = ({ setUserDetails }) => {
   const [name, setName] = useState("");
@@ -7,6 +8,7 @@ const SignIn = ({ setUserDetails }) => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,6 +16,8 @@ const SignIn = ({ setUserDetails }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     const user = {
       name,
       email,
@@ -21,133 +25,103 @@ const SignIn = ({ setUserDetails }) => {
       address,
       paymentMethod,
     };
-    setUserDetails(user);
-    navigate(from, { replace: true });
+
+
+    setTimeout(() => {
+      setUserDetails(user);
+      setIsSubmitting(false);
+      navigate(from, { replace: true });
+    }, 1000);
   };
 
   return (
     <div className="signin-container">
-      <style>{`
-        .signin-container {
-          display: flex;
-          justify-content: center;
-          padding: 2rem;
-          background-color:rgb(61, 141, 12);
-          min-height: 100vh;
-        }
-
-        .signin-form {
-          width: 100%;
-          max-width: 400px;
-          background: #fff;
-          padding: 2rem;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(19, 208, 211, 0.1);
-        }
-
-        .signin-form h2 {
-          margin-bottom: 1rem;
-          text-align: center;
-          color: #333;
-        }
-
-        .signin-form label {
-          margin-top: 1rem;
-          display: block;
-          font-weight: bold;
-          color: #444;
-        }
-
-        .signin-form input,
-        .signin-form textarea,
-        .signin-form select {
-          width: 100%;
-          padding: 0.7rem;
-          margin-top: 0.5rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          font-size: 1rem;
-          background-color:rgb(220, 230, 19);
-        }
-
-        .signin-form button {
-          margin-top: 1.5rem;
-          width: 100%;
-          padding: 0.8rem;
-          background-color:rgb(19, 224, 57);
-          color: #fff;
-          border: none;
-          border-radius: 4px;
-          font-weight: bold;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background-color 0.3s;
-        }
-
-        .signin-form button:hover {
-          background-color:rgb(220, 22, 203);
-        }
-      `}</style>
+      <div className="signin-background"></div>
 
       <form onSubmit={handleSubmit} className="signin-form">
-        <h2>Sign In & Delivery Details</h2>
+        <h2 className="form-title">Sign In & Delivery Details</h2>
 
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="Your Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label htmlFor="name" className="form-label">Name:</label>
+          <input
+            id="name"
+            type="text"
+            className="form-input"
+            placeholder="Your Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="enter e-mail.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input
+            id="email"
+            type="email"
+            className="form-input"
+            placeholder="your@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="phone">Phone:</label>
-        <input
-          id="phone"
-          type="tel"
-          placeholder=" enter 10-digit number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label htmlFor="phone" className="form-label">Phone:</label>
+          <input
+            id="phone"
+            type="tel"
+            className="form-input"
+            placeholder="10-digit phone number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="address">Address:</label>
-        <textarea
-          id="address"
-          placeholder="your address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
+        <div className="form-group">
+          <label htmlFor="address" className="form-label">Address:</label>
+          <textarea
+            id="address"
+            className="form-textarea"
+            placeholder="Your complete address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="payment">Payment Method:</label>
-        <select
-          id="payment"
-          value={paymentMethod}
-          onChange={(e) => setPaymentMethod(e.target.value)}
-          required
+        <div className="form-group">
+          <label htmlFor="payment" className="form-label">Payment Method:</label>
+          <select
+            id="payment"
+            className="form-select"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            required
+          >
+            <option value="cod">Cash on Delivery</option>
+            <option value="upi">UPI</option>
+            <option value="card">Credit/Debit Card</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          className="submit-btn"
+          disabled={isSubmitting}
         >
-          <option value="cod">Cash on Delivery</option>
-          <option value="upi">UPI</option>
-          <option value="card">Credit/Debit Card</option>
-        </select>
-
-        <button type="submit">Continue to Payment</button>
+          {isSubmitting ? (
+            <>
+              <span className="spinner"></span>
+              Processing...
+            </>
+          ) : (
+            "Continue to Payment"
+          )}
+        </button>
       </form>
-      <from>
-        <label></label>
-      </from>
     </div>
   );
 };

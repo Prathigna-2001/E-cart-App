@@ -1,39 +1,48 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({
+  companyName = "TrendyCart",
+  aboutText = "Your favorite destination for fashion & electronics.",
+  rating= "We offer the best prices and products, all items rated 5 stars!",
+  links = [
+    { name: "Home", url: "/" },
+    { name: "T-Shirts", url: "/tshirts" },
+    { name: "Electronics", url: "/electronics" },
+    { name: "Cart", url: "/cart" },
+    { name: "Toys", url: "/toys" },
+    { name: "Laptop", url: "/laptops" },
+    {name:"medicine",url:"/medicin" }
+  ],
+  socialInfo = "SmartBuy India – Trendy shopping in 2025  SmartBuy India shopping & online and in-store experiences, focusing on personalization, sustainability, and convenience. Shoppers use social commerce, voice search, and AR to enhance buying journeys. Resale markets and cross-border shopping are booming.",
+  copyrightYear = new Date().getFullYear()
+}) => {
   return (
-    <footer className="footer">
-  <div className="footer-container">
-    <div className="footer-about">
-      <h2>TrendyCart</h2>
-      <p>Your favorite destination for fashion & electronics.</p>
-      <h5>we are the best price and products all items and good rating out of view to 5..</h5>
-    </div>
-    <div className="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/tshirts">T-Shirts</a></li>
-        <li><a href="/electronics">Electronics</a></li>
-        <li><a href="/cart">Cart</a></li>
-      </ul>
-    </div>
-    <div className="footer-social">
-      <h4>Follow Us</h4>
-      <h1>this tready shoppin and best products..</h1>
-      <div className="social-icons">
-      <ol>
-       <li>t-shirts</li>
-       <li>electronics</li>
-       <li>mobiles</li>
-       <li>laptop</li>
-       </ol>
+    <footer className="footer" aria-label="Footer section">
+      <div className="footer-container">
+        <div className="footer-about">
+          <h2>{companyName}</h2>
+          <p>{aboutText}</p>
+          <h5>{rating}</h5>
+        </div>
+        <nav className="footer-links" aria-label="Quick links navigation">
+          <h4>Quick Links</h4>
+          <ul>
+            {links.map(({ name, url }) => (
+              <li key={name}>
+                <a href={url}>{name}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="footer-social">
+          <h4>Follow Us</h4>
+          <p>{socialInfo}</p>
+        </div>
       </div>
-    </div>
-  </div>
-  <p className="footer-bottom">AMBTI PRATHIGNA ©2025 TrendyCart. All rights reserved.</p>
-</footer>
-
+      <p className="footer-bottom">
+        {companyName} ©{copyrightYear}. All rights reserved.
+      </p>
+    </footer>
   );
 };
 

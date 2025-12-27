@@ -1,26 +1,73 @@
 
 .marquee-container {
   width: 100%;
-  background: #ffe57f;
   overflow: hidden;
-  white-space: nowrap;
-  border-bottom: 2px solid #ffc107;
+  background: linear-gradient(90deg, #09a571, #340a96);
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.6rem 0;
+  position: relative;
+  border-bottom: 2px solid #a413c8;
+  animation: bgColorChange 10s linear infinite alternate; /* background animation */
 }
+
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeAnim 20s linear infinite;
 
 .marquee-text {
-  display: inline-block;
-  padding: 1rem 0;
-  font-size: 1.1rem;
-  color: #333;
-  animation: scroll-left 15s linear infinite;
+  white-space: nowrap;
+  padding-right: 4rem;
+  font-weight: 500;
+  background: linear-gradient(90deg, #70ffa4, #ffcc70, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 5s linear infinite;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(100%);
-  }
 
-  100% {
-    transform: translateX(-100%);
+.bounce {
+  display: inline-block;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes marqueeAnim {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bgColorChange {
+  0% { background: linear-gradient(90deg, #d613d3, #b26b25); }
+  25% { background: linear-gradient(90deg, #b26b25, #70ffa4); }
+  50% { background: linear-gradient(90deg, #70ffa4, #ffcc70); }
+  75% { background: linear-gradient(90deg, #ffcc70, #ff6600); }
+  100% { background: linear-gradient(90deg, #ff6600, #d613d3); }
+}
+
+
+.marquee-container:hover .marquee {
+  animation-play-state: paused;
+}
+
+
+@media (max-width: 768px) {
+  .marquee-container {
+    font-size: 0.9rem;
+  }
+  .marquee-text {
+    padding-right: 2rem;
   }
 }

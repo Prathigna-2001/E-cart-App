@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+:root {
+  --primary: #0078ff;
+  --accent: #ff4081;
+  --bg-light: #f4f8fc;
+  --text-dark: #222;
+  --text-light: #555;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --radius: 15px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+.electronics-container {
+  min-height: 100vh;
+  padding: 2rem 2.5rem;
+}
+
+.brand-marquee {
+  background: linear-gradient(90deg, #0078ff, #00c6ff);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-text {
+  font-weight: 600;
+  margin: 0 1rem;
+}
+
+.brand-logos {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.electronics-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.electronics-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+
+.electronics-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) rotateZ(-1deg);
+  box-shadow: 0 12px 25px rgba(0, 120, 255, 0.2);
+}
+
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.12) rotateZ(1deg);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent);
+  transition: background 0.3s ease;
+}
+
+.product-card:hover .image-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent);
+}
+.product-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  z-index: 10;
+  animation: badgePop 0.6s ease forwards;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.product-details {
+  padding: 1rem 1.2rem 1.5rem;
+  text-align: left;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text-dark);
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0.5rem 0 1rem;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.star {
+  font-size: 1rem;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.star.filled {
+  color: #f4b400;
+}
+
+.rating-value {
+  margin-left: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.add-to-cart-btn {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: #ff619b;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.cart-icon {
+  transition: transform 0.3s ease;
+}
+
+.add-to-cart-btn:hover .cart-icon {
+  transform: rotate(-15deg);
+}
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .electronics-title {
+    font-size: 2.2rem;
+  }
+  .product-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .electronics-title {
+    font-size: 2rem;
+  }
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .electronics-container {
+    padding: 1rem;
+  }
+  .electronics-title {
+    font-size: 1.8rem;
+  }
+  .product-name {
+    font-size: 1rem;
+  }
+  .product-price {
+    font-size: 1rem;
+  }
+  .add-to-cart-btn {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
